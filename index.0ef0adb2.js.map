@@ -1,0 +1,1 @@
+{"mappings":"AAA2BA,SAASC,cAAc,iBAGzBC,UAAUC,IAAI","sources":["src/index.js"],"sourcesContent":["let breedSelectoDropdown = document.querySelector('.breed-select');\n\nfunction hideSelectMenu() {\n    breedSelectoDropdown.classList.add('is-hidden');\n    \n}\n\nhideSelectMenu();"],"names":["document","querySelector","classList","add"],"version":3,"file":"index.0ef0adb2.js.map"}

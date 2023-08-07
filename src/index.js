@@ -1,3 +1,5 @@
+import CatApi from "./js/cat-api";
+
 let breedSelectoDropdown = document.querySelector('.breed-select');
 let errorMessage = document.querySelector('.error')
 

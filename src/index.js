@@ -12,6 +12,7 @@ onPageLoad();
 
 axios.get()
 .then(response => getBreedList(response.data))
+.then(data => createBreedList(data))
 .catch(function(err) {
     console.log(err);
 })
@@ -23,7 +24,13 @@ function onPageLoad() {
     errorMessage.classList.add('is-hidden');
 }
 
-function getBreedList(breedsArray) {
-    console.log(breedsArray.map((breed)=>breed.name));
-    
+function getBreedList(allBreeds) {
+    return allBreeds.map((breed)=>breed.name);
+};
+
+function createBreedList(breedsArray) {
+    console.log(breedsArray.map((name)=>{ return
+        `<option value="${name}">${name}</option>`
+    })
+    );
 }

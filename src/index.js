@@ -1,8 +1,9 @@
 let breedSelectoDropdown = document.querySelector('.breed-select');
+let errorMessage = document.querySelector('.error')
 
-function hideSelectMenu() {
-    breedSelectoDropdown.classList.add('is-hidden');
-    
+function onPageLoad() {
+    breedSelectoDropdown.classList.add('is-hidden');    
+    errorMessage.classList.add('is-hidden');
 }
 
-hideSelectMenu();
+onPageLoad();

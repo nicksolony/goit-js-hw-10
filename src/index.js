@@ -33,6 +33,7 @@ function addBreedImage(id) {
     catApi.fetchCatByBreed(id)
     .then(response => {
         console.log(response[0].breeds);
+        hideError();
         addCatInfo(response[0])})
     .catch(showError)
 };
@@ -50,12 +51,18 @@ function addCatInfo(catData) {
     )
 };
 
-
-
 function showError() {
     errorMessage.classList.remove('is-hidden');   
 };
 
+function hideError() {  
+    if (!errorMessage.classList.contains('is-hidden')) {
+        errorMessage.classList.add('is-hidden');   
+    };
+};
+
 function hideLoader() {
-    loaderEl.classList.add('is-hidden');
+    if (errorMessage.classList.contains('is-hidden')) {
+        loaderEl.classList.add('is-hidden');
+    };
 };

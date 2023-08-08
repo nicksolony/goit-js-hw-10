@@ -53,14 +53,12 @@ function addBreedImage(id) {
 function addCatInfo(catData) {
     catInfoEl.innerHTML="";
     catInfoEl.insertAdjacentHTML('beforeend',`
-        <div class='catCard'>
             <img src="${catData.url}" alt="" width="300px"/>
             <div class='catInfo'>
                 <h1>${catData.breeds[0].name}</h1>
                 <p>${catData.breeds[0].description}</p>
                 <p><strong>Temperament: </strong>${catData.breeds[0].temperament}</p>
             </div>
-        </div>
     `
     )
 };

@@ -2,7 +2,7 @@
     display: none;
 }
 
-.catCard {
+.cat-info {
     display: flex;
     gap: 15px;
     padding-top: 15px;

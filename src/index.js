@@ -9,10 +9,11 @@ let catInfoEl = document.querySelector('.cat-info');
 
 
 
+
 onPageLoad();
 
 breedSelectoDropdown.addEventListener('change', e=>{
-    addBreedInfo(e.target.value);
+    addBreedImage(e.target.value);
 })
 
 
@@ -39,19 +40,21 @@ function createBreedList(breedsArray) {
 };
 
 
-function addBreedInfo(id) {
+function addBreedImage(id) {
     catApi.fetchCatByBreed(id)
-    .then(response => addCatImage(response[0].url))
+    .then(response => {
+        console.log(response);
+        addCatInfo(response[0].url)})
     .catch(err=>{
         console.log(err);
     })
 };
 
-function addCatImage(url) {
+function addCatInfo(url) {
     catInfoEl.innerHTML="";
     catInfoEl.insertAdjacentHTML('beforeend',`<img src="${url}" alt="" />`
     )
-}
+};
 
 
 

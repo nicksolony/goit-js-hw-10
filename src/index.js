@@ -1,4 +1,6 @@
 import axios from "axios";
+// import selectOption from './templates/dropDownOption.hbs'
+// import handlebars from "handlebars";
 
 axios.defaults.baseURL = 'https://api.thecatapi.com/v1/breeds';
 axios.defaults.headers.common["x-api-key"] = "live_sOdKW7TA6eUPaban2T56WWHht7VDTY1RtbQVCyqSqzeTwWs3BE6LTAPXGlcCcITU";
@@ -36,9 +38,10 @@ function getBreedList(allBreeds) {
 };
 
 function createBreedList(breedsArray) {
-    console.log(breedsArray);
-    console.log(breedsArray.map((name)=>{ return
-        `<option value="${name}">${name}</option>`
-    })
-    );
-}
+    breedSelectoDropdown.classList.remove('is-hidden');
+    breedSelectoDropdown.insertAdjacentHTML("beforeend", (breedsArray.map((breed => {
+        return `<option value="${breed.id}">${breed.name}</option>`
+    })).join("")));
+};
+
+

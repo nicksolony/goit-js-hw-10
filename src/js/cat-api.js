@@ -19,4 +19,14 @@ function getBreedList(allBreeds) {
     ));
 };
 
-export default {fetchBreeds};
+function fetchCatByBreed(breedId) {
+    return axios({
+        method: 'GET',
+        baseURL: 'https://api.thecatapi.com/v1/images/search?breed_ids='
+    })
+.then(response => {
+    return response.data
+})
+};
+
+export default {fetchBreeds,fetchCatByBreed};

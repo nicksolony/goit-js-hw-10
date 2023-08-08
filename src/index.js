@@ -8,10 +8,6 @@ let loaderEl = document.querySelector('.loader');
 let catInfoEl = document.querySelector('.cat-info');
 
 
-
-
-onPageLoad();
-
 breedSelectoDropdown.addEventListener('change', e=>{
     addBreedImage(e.target.value);
 })
@@ -19,21 +15,14 @@ breedSelectoDropdown.addEventListener('change', e=>{
 
 catApi.fetchBreeds()
 .then(createBreedList)
-.catch(err=>{
-    console.log(err);
+.catch(()=>{
+    hideLoader();
+    showError();
 })
-
-
-function onPageLoad() {
-    breedSelectoDropdown.classList.add('is-hidden');    
-    errorMessage.classList.add('is-hidden');
-}
-
-
 
 function createBreedList(breedsArray) {
     breedSelectoDropdown.classList.remove('is-hidden');
-    loaderEl.classList.add('is-hidden');
+    hideLoader();
     breedSelectoDropdown.insertAdjacentHTML("beforeend", (breedsArray.map((breed => {
         return `<option value="${breed.id}">${breed.name}</option>`
     })).join("")));
@@ -45,9 +34,7 @@ function addBreedImage(id) {
     .then(response => {
         console.log(response[0].breeds);
         addCatInfo(response[0])})
-    .catch(err=>{
-        console.log(err);
-    })
+    .catch(showError)
 };
 
 function addCatInfo(catData) {
@@ -65,3 +52,10 @@ function addCatInfo(catData) {
 
 
 
+function showError() {
+    errorMessage.classList.remove('is-hidden');   
+};
+
+function hideLoader() {
+    loaderEl.classList.add('is-hidden');
+};

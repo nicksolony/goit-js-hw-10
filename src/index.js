@@ -43,16 +43,21 @@ function createBreedList(breedsArray) {
 function addBreedImage(id) {
     catApi.fetchCatByBreed(id)
     .then(response => {
-        console.log(response);
-        addCatInfo(response[0].url)})
+        console.log(response[0].breeds);
+        addCatInfo(response[0])})
     .catch(err=>{
         console.log(err);
     })
 };
 
-function addCatInfo(url) {
+function addCatInfo(catData) {
     catInfoEl.innerHTML="";
-    catInfoEl.insertAdjacentHTML('beforeend',`<img src="${url}" alt="" />`
+    catInfoEl.insertAdjacentHTML('beforeend',`
+    <img src="${catData.url}" alt="" />
+    <h1>${catData.breeds[0].name}</h1>
+    <p>${catData.breeds[0].description}</p>
+    <p><strong>Temperament: </strong>${catData.breeds[0].temperament}</p>
+    `
     )
 };
 

@@ -13,12 +13,20 @@ breedSelectoDropdown.addEventListener('change', e=>{
 })
 
 
-catApi.fetchBreeds()
-.then(createBreedList)
-.catch(()=>{
+
+loadBreeds();
+
+function loadBreeds() {
+    showLoader();
+    catApi.fetchBreeds()
+    .then(createBreedList)
+    .catch(()=>{
     hideLoader();
     showError();
-})
+})    
+}
+
+
 
 function createBreedList(breedsArray) {
     breedSelectoDropdown.classList.remove('is-hidden');
@@ -30,9 +38,11 @@ function createBreedList(breedsArray) {
 
 
 function addBreedImage(id) {
+    showLoader();
     catApi.fetchCatByBreed(id)
     .then(response => {
         console.log(response[0].breeds);
+        hideLoader()
         hideError();
         addCatInfo(response[0])})
     .catch(showError)

@@ -52,7 +52,9 @@ function addCatInfo(catData) {
 };
 
 function showError() {
-    errorMessage.classList.remove('is-hidden');   
+    if (errorMessage.classList.contains('is-hidden')) {
+        errorMessage.classList.remove('is-hidden');   
+    };
 };
 
 function hideError() {  
@@ -61,8 +63,11 @@ function hideError() {
     };
 };
 
+
+function showLoader() {
+    loaderEl.classList.remove('is-hidden');
+};
+
 function hideLoader() {
-    if (errorMessage.classList.contains('is-hidden')) {
         loaderEl.classList.add('is-hidden');
-    };
 };

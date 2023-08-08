@@ -25,10 +25,18 @@ function onPageLoad() {
 }
 
 function getBreedList(allBreeds) {
-    return allBreeds.map((breed)=>breed.name);
+    return allBreeds.map(({id,name,image, temperament})=>(
+        {
+            id,
+            name,
+            image,
+            temperament
+        }
+    ));
 };
 
 function createBreedList(breedsArray) {
+    console.log(breedsArray);
     console.log(breedsArray.map((name)=>{ return
         `<option value="${name}">${name}</option>`
     })

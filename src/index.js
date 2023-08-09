@@ -9,7 +9,6 @@ let catInfoEl = document.querySelector('.cat-info');
 
 
 breedSelectoDropdown.addEventListener('change', e=>{
-    console.log(e.target.value);
     addBreedImage(e.target.value);
 })
 
@@ -39,9 +38,9 @@ function createBreedList(breedsArray) {
 
 
 function addBreedImage(id) {
-    console.log(id);
     hideError();
     showLoader();
+    catInfoEl.innerHTML="";
     catApi.fetchCatByBreed(id)
     .then(response => {
         console.log(response[0].breeds);
@@ -52,7 +51,6 @@ function addBreedImage(id) {
 };
 
 function addCatInfo(catData) {
-    catInfoEl.innerHTML="";
     catInfoEl.insertAdjacentHTML('beforeend',`
             <img src="${catData.url}" alt="" width="300px"/>
             <div class='catInfo'>

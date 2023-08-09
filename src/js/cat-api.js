@@ -11,7 +11,7 @@ function fetchBreeds() {
 };
 
 function getBreedList(allBreeds) {
-    return allBreeds.map(({id,name,image, temperament})=>(
+    return allBreeds.map(({id,name,image})=>(
         {
             id,
             name
@@ -25,9 +25,11 @@ function fetchCatByBreed(breedId) {
         headers: {
             'x-api-key':"live_sOdKW7TA6eUPaban2T56WWHht7VDTY1RtbQVCyqSqzeTwWs3BE6LTAPXGlcCcITU"
         },
-        baseURL: 'https://api.thecatapi.com/v1/images/search?breed_ids='
+        baseURL: 'https://api.thecatapi.com/v1/images/search?breed_ids=',
+        timeout: 1000,
     })
 .then(response => {
+    console.log(response);
     return response.data
 })
 };

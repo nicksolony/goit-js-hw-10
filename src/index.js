@@ -43,7 +43,6 @@ function addBreedImage(id) {
     catInfoEl.innerHTML="";
     catApi.fetchCatByBreed(id)
     .then(response => {
-        console.log(response[0].breeds);
         hideLoader()
         hideError();
         addCatInfo(response[0])})

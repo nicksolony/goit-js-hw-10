@@ -14,18 +14,6 @@ let catInfoEl = document.querySelector('.cat-info');
 //     addBreedImage(e.target.value);
 // })
 
-let select = new SlimSelect ({
-    select: `#single`,
-    events: {
-        afterChange: (option) => {
-            console.log(option[0])
-            addBreedImage(option[0].value)
-        }
-    },
-    settings: {
-        contentLocation: document.getElementById('local')
-      }
-})
 
 loadBreeds();
 
@@ -40,7 +28,6 @@ function loadBreeds() {
     })    
 }
 
-console.log(select);
 
 // function createBreedList(breedsArray) {
 //     breedSelector.classList.remove('is-hidden');
@@ -52,8 +39,21 @@ console.log(select);
 
 function createBreedList(breedsArray) {
     console.log(breedsArray);
+    
     // breedSelector.classList.remove('is-hidden');
     hideLoader();
+
+    let select = new SlimSelect ({
+        select: `#single`,
+        events: {
+            afterChange: (option) => {
+                console.log(option[0])
+                addBreedImage(option[0].value)
+            },
+        },
+        minSelected: 0,
+        placeholderText: 'Select Value',
+    })
     select.setData((breedsArray.map((breed)=>{
         return {
             text: breed.name,

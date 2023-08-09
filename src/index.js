@@ -20,10 +20,7 @@ function loadBreeds() {
     showLoader();
     catApi.fetchBreeds()
     .then(createBreedList)
-    .catch(()=>{
-    hideLoader();
-    showError();
-})    
+    .catch(onError)    
 }
 
 
@@ -46,7 +43,7 @@ function addBreedImage(id) {
         hideLoader()
         hideError();
         addCatInfo(response[0])})
-    .catch(showError)
+    .catch(onError)
 };
 
 function addCatInfo(catData) {
@@ -81,3 +78,8 @@ function showLoader() {
 function hideLoader() {
         loaderEl.classList.add('is-hidden');
 };
+
+function onError() {
+    hideLoader();
+    showError();
+}

@@ -38,7 +38,6 @@ function loadBreeds() {
 // };
 
 function createBreedList(breedsArray) {
-    console.log(breedsArray);
     
     // breedSelector.classList.remove('is-hidden');
     hideLoader();
@@ -47,7 +46,6 @@ function createBreedList(breedsArray) {
         select: `#single`,
         events: {
             afterChange: (option) => {
-                console.log(option[0])
                 addBreedImage(option[0].value)
             },
         },

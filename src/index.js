@@ -51,14 +51,15 @@ function createBreedList(breedsArray) {
         },
         minSelected: 0,
         placeholderText: 'Select Value',
-    })
+    });
+
     select.setData((breedsArray.map((breed)=>{
         return {
             text: breed.name,
             value:breed.id
-        }
+        };
     })
-    ))
+    ));
 }
 
 
